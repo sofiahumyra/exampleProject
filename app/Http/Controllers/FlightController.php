@@ -14,33 +14,45 @@ class FlightController extends Controller
 {
     //
     public function index(){
-        $flights = DB::select('select * from flights');
-        return view('flight_view',['flights'=>$flights]);    
+        $flights = Flight::orderBy('created_at','desc')->get();
+
+        return view('flight_view',compact('flights'));    
     }
 
-    // Insert
+    // Insert Part
 
-    
-    //Update
+     public function insert(){
+      //dd('ok');
+        // $emp = getURLList();
+        return view('/flight_insert');
+    }
+
+    public function create(Request $request){
+        Flight::create([
+            'name' => $request->name,
+            'code' => $request->code,
+
+        ]);
+        // echo "Record inserted successfully.<br/>";
+        // return view('/flight_view',);
+
+        return redirect('flight')->with('status','Record inserted successfully.');
+
+    }
+
+
+    //Update Part
     public function edit(Request $request, $id)
     {
-     // dd($request->all());
         try{
-            // $emp = Flight::select('id','name','code')->find($id);
-            // if($emp){
-            //     return view('edit',['empdata'=>$emp]);
-            // }
-            // else{
-            //     return redirect('/flight')->with('failed','Invalid Name');
-            // }
             $emp = Flight::find($id);
             $emp->name = $request['name'];
             $emp->code = $request['code'];
             $emp->save();
-            return redirect('/flight');
+            return redirect()->back()->with('success','Record has been updated.');
         }
         catch(Exception $e){
-            return redirect('/flight')->with('failed','Internal server Error');
+            return redirect()->back()->with('failed','Internal server Error');
         }
     }
 
@@ -84,11 +96,11 @@ class FlightController extends Controller
 
     // Delete
      public function destroy($id) {
-        DB::delete('delete from flights where id = ?',[$id]);
-        echo "Record deleted successfully.
-        ";
-        return redirect('/flight');
-}
+        // DB::delete('delete from flights where id = ?',[$id]);
+        $flight = Flight::find($id)->delete();
+        
+        return redirect()->back()->with('status','Record successfully deleted.');
+    }
 
 }
-?>
+

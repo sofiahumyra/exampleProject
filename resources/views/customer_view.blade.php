@@ -4,28 +4,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if (session('success'))
-            <div class="alert alert-success mb-3" role="alert">
-                {{ session('success') }}
-            </div>
-            @endif
-            @if (session('error'))
-            <div class="alert alert-error" role="alert">
-                {{ session('error') }}
-            </div>
-            @endif
             <div class="card">
-                <div class="card-header">{{ __('Update') }}</div>
+                <div class="card-header">{{ __('Customer Details') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ url('/customer/create')}}">
                         @csrf
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $flight['name'] }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -36,12 +26,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="code" class="col-md-4 col-form-label text-md-end">{{ __('Code') }}</label>
+                            <label for="age" class="col-md-4 col-form-label text-md-end">{{ __('Age') }}</label>
 
                             <div class="col-md-6">
-                                <input id="code" type="number" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ $flight['code'] }}"required autocomplete="code" autofocus>
+                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
 
-                                @error('code')
+                                @error('age')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -49,15 +39,12 @@
                             </div>
                         </div>
 
-                    
-
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Update') }}
+                                    {{ __('Submit') }}
                                 </button>
-
-                
+                                
                             </div>
                         </div>
                     </form>
@@ -67,3 +54,4 @@
     </div>
 </div>
 @endsection
+

@@ -22,10 +22,17 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/flight', 'FlightController@index')->name('flight');
 
-// Update
+// Insert Data
+Route::get('flight/insert','FlightController@insert')->name('insert');
+Route::post('/flight/create','FlightController@create')->name('create');// dekat mana nak route
+// Route::post('/flight/create',function(){
+// })->name('create');
+
+// Update Data
 Route::get('/flight/edit/{id}','FlightController@show')->name('edit');
 Route::post('/flight/edit/{id}','FlightController@edit')->name('update');
 
-//Delete
-Route::get('delete-records','FlightController@index')->name('flight');
+//Delete Data
+Route::get('delete-records','FlightController@index')->name('delete');
 Route::get('/flight/delete/{id}','FlightController@destroy')->name('destroy');
+
