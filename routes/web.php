@@ -36,3 +36,15 @@ Route::post('/flight/edit/{id}','FlightController@edit')->name('update');
 Route::get('delete-records','FlightController@index')->name('delete');
 Route::get('/flight/delete/{id}','FlightController@destroy')->name('destroy');
 
+//Booking Insert
+Route::get('/booking/{flight}/insert','BookingController@insert')->name('insert');
+Route::post('/booking/{flight}/insert','BookingController@create')->name('insert');
+//Route::post('/booking/create','BookingController@create')->name('create');
+
+//Customer Insert
+Route::get('/customer/{booking}/insert','CustomerController@insert')->name('insert');
+Route::post('/customer/{booking}/insert','CustomerController@create')->name('insert');
+
+
+
+

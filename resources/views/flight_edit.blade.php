@@ -48,6 +48,19 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-3">
+                                            <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
+
+                                            <div class="col-md-6">
+                                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $flight['price'] }}" required autocomplete="price" autofocus>
+
+                                                @error('price')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
 
                     
 

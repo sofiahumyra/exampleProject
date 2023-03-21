@@ -68,6 +68,22 @@
                                                 @enderror
                                             </div>
                                         </div>
+
+                                          <div class="row mb-3">
+                                            <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
+
+                                            <div class="col-md-6">
+                                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
+
+                                                @error('price')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        
                                         <br/>
 
                                         <div class="row mb-0">
@@ -95,6 +111,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Code</th>
+                        <th scope="col">Price</th>
                         <th scope="col">Action</th>
                         <th scope="col">Booking</th>
                     </tr>
@@ -106,11 +123,12 @@
                         <td>{{ $key+1 }}.</td>
                         <td>{{ $flight->name }}</td>
                         <td>{{ $flight->code }}</td>
+                         <td>{{ $flight->price }}</td>
                         <td> <a style ="color:darkgreen; text-decoration: none;" href = "{{route('edit',$flight->id)}}"> Edit</a> | 
 
                             <a style ="color:red; text-decoration: none;" href = "{{route('destroy',$flight->id)}}"> Delete</a> 
                         </td>
-                        <td><a style ="color:blue; text-decoration: none;" href = "{{ url('/booking/create')}}"> Book Now</a></td>
+                        <td><a style ="color:blue; text-decoration: none;" href = "{{ url('/booking/'.$flight->id.'/insert')}}"> Book Now</a></td>
                     </tr>
                 </tbody>
 

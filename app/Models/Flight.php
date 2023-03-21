@@ -11,6 +11,7 @@ class Flight extends Model
     protected $fillable = [
         'name',
         'code',
+        'price',
         
     ];
 }

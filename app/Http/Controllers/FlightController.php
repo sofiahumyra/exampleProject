@@ -21,7 +21,7 @@ class FlightController extends Controller
 
     // Insert Part
 
-     public function insert(){
+    public function insert(){
       //dd('ok');
         // $emp = getURLList();
         return view('/flight_insert');
@@ -31,10 +31,10 @@ class FlightController extends Controller
         Flight::create([
             'name' => $request->name,
             'code' => $request->code,
+            'price' => $request->price,
+
 
         ]);
-        // echo "Record inserted successfully.<br/>";
-        // return view('/flight_view',);
 
         return redirect('flight')->with('status','Record inserted successfully.');
 
@@ -48,6 +48,7 @@ class FlightController extends Controller
             $emp = Flight::find($id);
             $emp->name = $request['name'];
             $emp->code = $request['code'];
+            $emp->price = $request['price'];
             $emp->save();
             return redirect()->back()->with('success','Record has been updated.');
         }
@@ -56,51 +57,25 @@ class FlightController extends Controller
         }
     }
 
+
+    // Show Part
     public function show(Request $request, $id)
     {
-      $flight = Flight::find($id);
-      return view('flight_edit', compact('flight'));
+     $flight = new Flight;
+     $flight->name = $request->name;
+     $flight->code = $request->code;
+     $flight->price = $request->price;
+     $flight->save();
+     
+ }
 
-        $rules = [
-            'id'=> [Rule::exists('user')->where(function ($query){
-                $query->where('id',$id);
-            }),
-        ],
-      
-    ];
-
-    $validator = Validator::make($request->all(),$rules);
-    if($validator->fails()){
-        return redirect('/flight/edit/'.$id)
-        ->withInput()
-        ->withErrors($validator);
-    }
-    else{
-      dd($request->all());
-        $data = $request->input();
-        dd($data);
-        try{
-            $emp = Flight::find($id);
-            $emp->name = $data['name'];
-            $emp->code = $data['code'];
-            $emp->save();
-            return redirect('/flight');
-        }
-        catch(Expection $e){
-            return redirect('/flight')
-            ->with('failed',$e);
-        }
-    }
-  
-  }
-
-    // Delete
-     public function destroy($id) {
+    // Delete Part
+ public function destroy($id) {
         // DB::delete('delete from flights where id = ?',[$id]);
-        $flight = Flight::find($id)->delete();
-        
-        return redirect()->back()->with('status','Record successfully deleted.');
-    }
+    $flight = Flight::find($id)->delete();
+    
+    return redirect()->back()->with('status','Record successfully deleted.');
+}
 
 }
 
