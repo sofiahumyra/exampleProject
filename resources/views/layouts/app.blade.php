@@ -34,6 +34,11 @@
                                     <a class="nav-link" href="{{ route('flight') }}">{{ __('Flight') }}</a>
                                 </li>
 
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('flight') }}">{{ __('Booking') }}</a>
+                                </li>
+
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

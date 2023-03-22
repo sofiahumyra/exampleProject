@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
-    // protected $fillable = [
-    //     'customer_name',
-    //     'age',
-    //     'booking_id',
+    protected $fillable = [
+        'customer_name',
+        'age',
+        'booking_id',
        
-    // ];
+    ];
 
      public function booking()
    {

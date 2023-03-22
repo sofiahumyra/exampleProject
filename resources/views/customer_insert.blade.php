@@ -5,12 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Customer Details') }}</div>
+                <div class="card-header">{{ __('Dashboard / Flight / Booking Information / Customer Details') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="">
                         @csrf
                          <input type='hidden' name='booking_id' value=''>
+                       
 
                         <div class="row mb-3">
                             <label for="customer_name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>

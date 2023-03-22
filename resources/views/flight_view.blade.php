@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Dashboard / Flight') }}</div>
 
 
                 <div class="card-body">
@@ -18,7 +18,7 @@
                     </div>
                     @endif
 
-                    <h4>List Name and Code</h4> <!-- Button trigger modal -->
+                    <h4>List Flight Trip</h4> <!-- Button trigger modal -->
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <br/>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -40,8 +40,6 @@
                                         @csrf
 
                                         <div class="row mb-3">
-
-
                                             <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>
 
                                             <div class="col-md-6">
@@ -69,7 +67,7 @@
                                             </div>
                                         </div>
 
-                                          <div class="row mb-3">
+                                        <div class="row mb-3">
                                             <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
 
                                             <div class="col-md-6">
@@ -104,10 +102,10 @@
                 </div>
                 <br/>
 
-                <table class="table" style="width:100%; text-align:center">
+                <table class="table w-100 text-center">
                     <thead>  
 
-                       <tr>
+                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Code</th>
@@ -123,12 +121,13 @@
                         <td>{{ $key+1 }}.</td>
                         <td>{{ $flight->name }}</td>
                         <td>{{ $flight->code }}</td>
-                         <td>{{ $flight->price }}</td>
+                        <td>{{ $flight->price }}</td>
                         <td> <a style ="color:darkgreen; text-decoration: none;" href = "{{route('edit',$flight->id)}}"> Edit</a> | 
 
                             <a style ="color:red; text-decoration: none;" href = "{{route('destroy',$flight->id)}}"> Delete</a> 
                         </td>
-                        <td><a style ="color:blue; text-decoration: none;" href = "{{ url('/booking/'.$flight->id.'/insert')}}"> Book Now</a></td>
+                        <td><a class="btn btn-link text-decoration-none" href = "{{ url('/flight/'.$flight->id.'/booking')}}"> Book Now</a></td>
+                       
                     </tr>
                 </tbody>
 

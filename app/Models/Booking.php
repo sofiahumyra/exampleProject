@@ -15,6 +15,12 @@ class Booking extends Model
        
     ];
 
+//     public function show(Booking $booking){
+        
+//     return view('bookings.show', ['booking' => $booking]);
+// }
+
+
      public function customer() {
         return $this->hasOne(Customer::class);
     }

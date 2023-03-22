@@ -14,4 +14,7 @@ class Flight extends Model
         'price',
         
     ];
+         public function booking() {
+        return $this->hasOne(Booking::class);
+    }
 }

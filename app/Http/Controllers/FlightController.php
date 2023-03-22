@@ -14,6 +14,8 @@ class FlightController extends Controller
 {
     //
     public function index(){
+        $hid = hash('sha256',40);
+        //dd($hid);
         $flights = Flight::orderBy('created_at','desc')->get();
 
         return view('flight_view',compact('flights'));    
@@ -24,6 +26,7 @@ class FlightController extends Controller
     public function insert(){
       //dd('ok');
         // $emp = getURLList();
+        
         return view('/flight_insert');
     }
 
@@ -45,11 +48,11 @@ class FlightController extends Controller
     public function edit(Request $request, $id)
     {
         try{
-            $emp = Flight::find($id);
-            $emp->name = $request['name'];
-            $emp->code = $request['code'];
-            $emp->price = $request['price'];
-            $emp->save();
+            $flight = Flight::find($id);
+            $flight->name = $request->name;
+            $flight->code = $request->code;
+            $flight->price = $request->price;
+            $flight->save();
             return redirect()->back()->with('success','Record has been updated.');
         }
         catch(Exception $e){
@@ -61,21 +64,28 @@ class FlightController extends Controller
     // Show Part
     public function show(Request $request, $id)
     {
-     $flight = new Flight;
-     $flight->name = $request->name;
-     $flight->code = $request->code;
-     $flight->price = $request->price;
-     $flight->save();
-     
- }
+        $flight = new Flight;
+        $flight->name = $request->name;
+        $flight->code = $request->code;
+        $flight->price = $request->price;
+        $flight->save();
+
+    }
 
     // Delete Part
- public function destroy($id) {
+    public function destroy($id) {
         // DB::delete('delete from flights where id = ?',[$id]);
-    $flight = Flight::find($id)->delete();
-    
-    return redirect()->back()->with('status','Record successfully deleted.');
-}
+        $flight = Flight::find($id)->delete();
+
+        return redirect()->back()->with('status','Record successfully deleted.');
+    }
+
+    public function booking(Flight $flight)
+    {
+        return view('/flight_insert')->with(['flight'=>$flight]);
+
+        
+    }
 
 }
 

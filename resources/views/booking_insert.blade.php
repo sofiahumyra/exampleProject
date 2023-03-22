@@ -5,12 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Booking Information') }}</div>
+                <div class="card-header">{{ __('Dashboard / Flight / Booking Information') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="">
                         @csrf
-                       
 
                         <div class="row mb-3">
                             <label for="total_seat" class="col-md-4 col-form-label text-md-end">{{ __('Total Seat') }}</label>
@@ -20,9 +19,9 @@
                                 <input id="total_seat" type="text" class="form-control @error('total_seat') is-invalid @enderror" name="total_seat" value="{{ old('total_seat') }}" required autocomplete="total_seat" autofocus>
 
                                 @error('total_seat')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -34,13 +33,13 @@
                                 <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" required autocomplete="date" autofocus>
 
                                 @error('date')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
-                         
+
 
 
                         <div class="row mb-0">

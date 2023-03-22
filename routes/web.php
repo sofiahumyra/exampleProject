@@ -25,6 +25,8 @@ Route::get('/flight', 'FlightController@index')->name('flight');
 // Insert Data
 Route::get('flight/insert','FlightController@insert')->name('insert');
 Route::post('/flight/create','FlightController@create')->name('create');// dekat mana nak route
+Route::get('flight/{flight}/booking','FlightController@booking')->name('flight.booking');
+Route::post('flight/{flight}/booking','BookingController@store')->name('flight.booking.store');
 // Route::post('/flight/create',function(){
 // })->name('create');
 
@@ -44,6 +46,14 @@ Route::post('/booking/{flight}/insert','BookingController@create')->name('insert
 //Customer Insert
 Route::get('/customer/{booking}/insert','CustomerController@insert')->name('insert');
 Route::post('/customer/{booking}/insert','CustomerController@create')->name('insert');
+
+//Display Invoice
+Route::get('/customer/{customer}/insert','DisplayinputController@display')->name('show');
+
+
+//Hide ID url booking th
+
+
 
 
 
