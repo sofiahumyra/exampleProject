@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use \Illuminate\Http\Response;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Models\Flight;
@@ -14,7 +14,7 @@ class FlightController extends Controller
 {
     //
     public function index(){
-        $hid = hash('sha256',40);
+        //$hid = hash('sha256',40);
         //dd($hid);
         $flights = Flight::orderBy('created_at','desc')->get();
 
@@ -38,6 +38,7 @@ class FlightController extends Controller
 
 
         ]);
+        
 
         return redirect('flight')->with('status','Record inserted successfully.');
 

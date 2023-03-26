@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard / Flight / Booking Information / Customer Details / Invoice') }}</div>
+                <div class="card-header">{{ __('Invoice') }}</div>
 
 
 
