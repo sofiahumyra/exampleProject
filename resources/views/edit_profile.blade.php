@@ -32,11 +32,17 @@
                         <label for="email">Email</label>
                         <input type="email" name="email" value="{{ $user->email }}" class="form-control">
                     </div>
+
+                    <div class="form-group">
+                        <label for="name">Image</label>
+                        <input type="file" name="profile_picture" value="{{ $user->profile_picture }}" class="form-control">
+                    </div>
                     <br/>
 
                     <button type="submit" class="btn btn-primary">Save Changes</button>
-                </div>
-            </form>
+                   
+                </form>
+            </div>
         </div>
     </div>
 </div>

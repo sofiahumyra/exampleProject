@@ -32,7 +32,8 @@
                                 {{ session('status') }}
                             </div>
                             @endif
-
+                        <form action="{{ route('history.view') }}" method="GET">
+                              @csrf
                             <table class="table" style="width:100%; text-align:center">
                                 <thead>  
 
@@ -80,20 +81,21 @@
                 </div>
                 <br/>
 
-                <div class="row mb-0">
-                    <div class="col-md-8 offset-md-5">
-                        <button type="submit" class="btn btn-primary" onclick="alert('Enjoy The Trip!!')">
-                            {{ __('Save') }}
-                        </button>
+             
+                  
+                    <div class="card-footer">
+                          <div class="col-md-8 offset-md-4">
+                            <button type="submit" class="btn btn-primary float-end">
+                                {{ __('Save') }}
+                            </button>
+                         </div>
 
                     </div>
-                </div>
+               </form>
+          
                 <br/>
             </div>
         </div>
     </div>
 </div>
-</div>
-
-
 @endsection

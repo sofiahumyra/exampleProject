@@ -11,22 +11,24 @@ class Booking extends Model
     protected $fillable = [
         'total_seat',
         'date',
-        'flight_id',
-       
+        'flight_id',    
     ];
 
 //     public function show(Booking $booking){
-        
+
 //     return view('bookings.show', ['booking' => $booking]);
 // }
 
 
-     public function customer() {
+    public function customer() {
         return $this->hasOne(Customer::class);
     }
 
-       public function flight()
-   {
-     return $this->belongsTo(Flight::class);
-   }
+    public function flight(){
+       return $this->belongsTo(Flight::class);
+    }
+
+       public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

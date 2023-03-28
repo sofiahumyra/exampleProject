@@ -35,7 +35,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('flight') }}">{{ __('History') }}</a>
+                            <a class="nav-link" href="{{ route('history.view') }}">{{ __('History') }}</a>
                         </li>
 
                         <li class="nav-item">

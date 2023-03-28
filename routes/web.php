@@ -33,9 +33,11 @@ Route::post('/flight/edit/{id}','FlightController@edit')->name('update');
 Route::get('delete-records','FlightController@index')->name('delete');
 Route::get('/flight/delete/{id}','FlightController@destroy')->name('destroy');
 
-//Booking Routes
+//Booking Routes 
 Route::get('/booking/{flight}/insert','BookingController@insert')->name('insert');
 Route::post('/booking/{flight}/insert','BookingController@create')->name('insert');
+Route::get('/booking', 'BookingController@index')->name('history.view');
+Route::get('/booking/{id}', 'BookingController@index')->name('history');
 
 
 //Customer Routes

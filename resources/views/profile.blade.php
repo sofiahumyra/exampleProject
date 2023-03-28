@@ -20,15 +20,20 @@
 
             <div class="card-body">
              <form action="{{ route('user.profile.edit') }}">
+            
+                <div class="d-flex justify-content-center align-items-center">
+                     <img src="{{ asset('storage/profile_pictures/' . $user->profile_picture) }}" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px;">
+                </div>
+                <br/>
 
-                <div class="row mb-3">
+                   <div class="row mb-3">
                     <label class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
 
                     <div class="col-md-6">
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" readonly value="{{ Auth::user()->name}}" >
                     </div>
-                </div>
+                   </div>
 
                 <div class="row mb-3">
                     <label class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
@@ -37,13 +42,14 @@
                         <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" readonly value="{{ Auth::user()->email}}" >
                     </div>
                 </div>
-                <div>
-                    <button type="submit" class="btn btn-primary float-end">Edit Profile
-                    </button>
-                </div>
-            </form>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary float-end">Edit Profile
+                        </button>
+                    </div>
+             </form>
+            </div>
         </div>
     </div>
 </div>
-
 @endsection

@@ -26,12 +26,30 @@ class UserProfileController extends Controller
 
     public function update(Request $request)
     {
-        $user = Auth::user();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        // set other fields
-        $user->save();
 
-        return redirect()->route('user.profile')->with('success', 'Profile updated successfully.');
+        $user = Auth::user();
+        if ($request->hasFile('profile_picture')) {
+            $profile_picture = $request->file('profile_picture');
+            $filename = time() . '.' . $profile_picture->getClientOriginalExtension();
+            $profile_picture->storeAs('public/profile_pictures', $filename);
+            $user->profile_picture = $filename;
+            $user->name = $request->name;
+            $user->email = $request->email;
+
+            //Update picture
+            $file = $request->file('profile_picture');
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/profile_pictures', $filename);
+            Storage::delete('public/profile_pictures/' . $user->profile_picture);
+            $user->profile_picture = $filename;
+            $user->save();
+
+
+            return redirect()->route('user.profile')->with('success', 'Profile updated successfully.');
+
+        }
     }
+
+
+
 }

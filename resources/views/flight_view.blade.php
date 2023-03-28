@@ -89,7 +89,6 @@
                                                 <button type="submit" class="btn btn-primary">
                                                     {{ __('Add') }}
                                                 </button>
-
                                             </div>
                                         </div>
                                     </form>
@@ -98,14 +97,13 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <br/>
 
                 <table class="table w-100 text-center">
                     <thead>  
 
-                     <tr>
+                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Code</th>
@@ -126,8 +124,7 @@
 
                             <a style ="color:red; text-decoration: none;" href = "{{route('destroy',$flight->id)}}"> Delete</a> 
                         </td>
-                        <td><a class="btn btn-link text-decoration-none" href = "{{ url('/flight/'.$flight->id.'/booking')}}"> Book Now</a></td>
-                       
+                        <td><a class="btn btn-link text-decoration-none" href = "{{ url('/flight/'.$flight->id.'/booking')}}"> Book Now</a></td>   
                     </tr>
                 </tbody>
 
@@ -135,8 +132,8 @@
                 @endforeach
             </table>
         </div>
+        
     </div>
-</div>
 </div>
 </div>
 
