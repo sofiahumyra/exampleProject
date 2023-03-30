@@ -34,15 +34,16 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name">Image</label>
+                        <label for="profile_picture">Profile Picture</label>
                         <input type="file" name="profile_picture" value="{{ $user->profile_picture }}" class="form-control">
+                         
                     </div>
                     <br/>
 
                     <button type="submit" class="btn btn-primary">Save Changes</button>
-                   
                 </form>
-            </div>
+                </div>
+            
         </div>
     </div>
 </div>

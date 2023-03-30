@@ -22,8 +22,9 @@
              <form action="{{ route('user.profile.edit') }}">
             
                 <div class="d-flex justify-content-center align-items-center">
-                     <img src="{{ asset('storage/profile_pictures/' . $user->profile_picture) }}" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px;">
+                     <img src="{{ asset('storage/profile_pictures' . $user->profile_picture) }}" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px;">
                 </div>
+
                 <br/>
 
                    <div class="row mb-3">

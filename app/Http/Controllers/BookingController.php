@@ -24,10 +24,10 @@ class BookingController extends Controller
         $bookings = Auth::user()->bookings;
 
         $bookings = Booking::orderBy('created_at', 'desc')->get();
-     
+        
         return view('history_view', compact('bookings'));
     }
-  
+    
 
 
     public function insert(Flight $flight)
@@ -74,9 +74,9 @@ class BookingController extends Controller
         return view('display_invoice',compact('booking'))->with('success','New booking successfully created.');
     }
 
-       public function show($id){
+    public function show($id){
         // dd($id);
-    
+        
         $booking = Booking::find($id);
         // dd($booking->flight);    
         return view('history_view',compact('booking'));

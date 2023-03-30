@@ -21,7 +21,7 @@ class UserProfileController extends Controller
     public function edit()
     {
         $user = Auth::user();
-        return view('/edit_profile', compact('user'));
+        return view('edit_profile', compact('user'));
     }
 
     public function update(Request $request)
@@ -35,21 +35,10 @@ class UserProfileController extends Controller
             $user->profile_picture = $filename;
             $user->name = $request->name;
             $user->email = $request->email;
-
-            //Update picture
-            $file = $request->file('profile_picture');
-            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/profile_pictures', $filename);
-            Storage::delete('public/profile_pictures/' . $user->profile_picture);
-            $user->profile_picture = $filename;
+            // set other fields
             $user->save();
-
-
-            return redirect()->route('user.profile')->with('success', 'Profile updated successfully.');
-
+            
         }
+        return redirect()->route('user.profile')->with('success', 'Profile updated successfully.');
     }
-
-
-
 }
